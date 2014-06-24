@@ -1,0 +1,555 @@
+.body{
+	background-color: #F1F1F1;
+	overflow-x: hidden; 
+}
+.content-body{
+	background-color: #fff;
+}
+.page-admin{
+	background-color:#ffffff; 
+}
+#inner.navbar-inner{
+	background-color: #037092;
+	 overflow: hidden;
+	 /*margin-top: 20px;*/
+	 color:#ffffff;
+	 width: 82%;
+	 margin:2% 9%;
+}
+.form_login{
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+.form_login h3{
+	color: blue;
+}
+/* saorin : style of admin page*/
+#inner.navbar-inner h4{
+	 color:#ffffff;
+	 font-weight: bold; 
+	 text-align: center;
+	 
+}
+#remember{
+	color:#ffffff;
+
+}
+h2 {
+	/*color:#ffffff;
+	text-align: center;*/
+	margin-top: 10px;
+}
+.form-signin {
+    background-color: #037092;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    margin: 40px auto 20px;
+    max-width: 38%;
+    padding: 19px 29px 29px;
+}
+.form-signin input[type="text"], .form-signin input[type="password"] {
+    font-family: verdana;
+    font-size: 12px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+}
+.mark-style {
+	background-color: #EEF1F6;
+    margin:2% 9%;
+    overflow: hidden;
+    padding: 11px 19px;
+     width: 82%;
+
+	/* border-top: 1px solid #dddddd */
+}
+
+/*end of style of admin page*/
+.header{
+	/*background-color: #222222;*/
+  background-color: #54544C;
+	clear: both;
+	padding: 10px 10px 5px;
+}
+.after-header{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.col-md-7 column h3{
+	text-align: center;
+	margin-left: 30px;
+}
+.nav .nav-tabs .menu .active a{
+	background-color: blue;
+}
+.menu h4{
+	color: #428BCA;
+	margin-left: 35px;
+}
+.content-full{
+	background-color: #fff;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+.footer{
+	background-color: #222222;
+	color: #FFFFFF;
+    padding: 10px 10px 5px;
+}
+fieldset.scheduler-border {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 0 0 1.5em 0 !important;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+}
+
+legend.scheduler-border {
+    font-size: 1.5em !important;
+    /*font-weight: bold !important;*/
+    text-align: left !important;
+
+}
+.main_content{
+	background-color: #fff;
+	border-radius: 3px;
+	padding: 10px;
+}
+.menu{
+	background-color: #222222;
+	border-radius: 3px;
+	padding:5px;
+}
+.column-menu {
+	padding-right: 0px;
+}
+.images-dashboard{
+	width: 100px;
+	height: 100px;
+}
+.footer{
+	/*background-color: #222222;*/
+  background-color: #54544C;
+	clear: both;
+}
+.require{
+	color:red;
+}
+/* add class by Mr.Lak*/
+
+/* Start Customize module*/
+
+.view_enable_customize{color:#428BCA; cursor: pointer;}
+.view_enable_customize:hover {color:#2a6496;text-decoration: underline;}
+.cuscon_activities, .cuscon_accommodation, .cuscon_transportation {
+  padding: 5px 15px;
+}
+.cuscon_td_checkbox .checkbox-inline{
+  padding-top: 0px;
+}
+
+/*End Customize module*/
+.breadcrumb {
+  margin-bottom: 6px;
+}
+.search{
+  padding-left:0px;
+  padding-top:0px;
+  padding-bottom:0px;
+}
+.top-action{
+  text-align: right;
+  padding-bottom:0px;
+  margin-top:6px;
+}
+.pagination{
+  margin-top: 0px;
+  margin-bottom: 6px;
+  float: right;
+} 
+ul li a strong {
+  background-color: #3399FF;
+}
+
+.action_page_header{
+  border-bottom: 1px solid #CCCCCC;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
+.require{
+  color:red;
+}
+.error{
+  display:none;
+  color:red;
+}
+.tables{
+  margin-bottom: 10px;
+  margin-top: -10px;
+    width: 100%;
+}
+.tables > thead > tr > th, .tables > tbody > tr > th, .tables > tfoot > tr > th, .tables > thead > tr > td, .tables > tbody > tr > td, .tables > tfoot > tr > td{
+  border-bottom: 1px solid #DDDDDD;
+    line-height: 1.42857;
+    padding: 8px;
+    vertical-align: top;
+}
+.imgContent{
+  height: 50px;
+  width:auto;
+  padding:0px 5px;
+}
+.dboard-padding{
+    padding:5px 5px 10px 5px;
+}
+.logout-profile{
+  text-align: right;
+}
+#profile-icon img, #logout img, #setting img{
+  width: 50px;
+  height: 50px;
+}
+#profile-name{
+  vertical-align: bottom;
+  padding-right: 10px;
+  color:white;
+}
+.dashboard{ text-align: center; color: white; }
+.dashboard h1{ margin-top: 10px; }
+.search .form_search{ margin-left: -13px; }
+.act_img { height: 65px; }
+.ep_img { height: 65px;}
+.acc_img { height: 65px;}
+.modal-activities-body{ padding:5px; }
+.modal-activities-footer{ margin-top:0px; }
+.padding-top-action{padding-right: 0px;}
+.action-header{border-bottom: 1px solid #CCCCCC; margin-bottom: 20px; margin-top: 0; padding: 0 0 10px;}
+.action-bottom{
+  width:97%;margin-left: auto; margin-right: auto;border-bottom: 1px solid #CCCCCC; margin-bottom: 12px; margin-top: 0; padding: 0 0 10px;}
+#alert strong { color: red; }
+.blockquote{font-size:12px; color:#8C8C8C; padding: 5px 10px; margin: -10px 0 12px; }
+.view_enable{color:#428BCA; cursor: pointer;}
+.view_enable:hover {color:#2a6496;text-decoration: underline;}
+.view_enable_package{color:#428BCA; cursor: pointer;}
+.view_enable_package:hover {color:#2a6496;text-decoration: underline;}
+.view_enable_booking{color:#428BCA; cursor: pointer;}
+.view_enable_booking:hover {color:#2a6496;text-decoration: underline;}
+.subactivitiesdiv h3{
+  margin-top:10px;
+  border-bottom: 1px solid #CCCCCC; padding: 0 0 10px;
+}
+.extraproductdiv h3{
+  margin-top:10px;
+  border-bottom: 1px solid #CCCCCC; padding: 0 0 10px;
+}
+.dropdown-menu{ z-index: 1100; }
+.pk_activities, .pk_accommodation, .pk_transportation {
+  padding: 5px 15px;
+}
+.pk_td_checkbox .checkbox-inline{
+  padding-top: 0px;
+}
+/*end code Mr.Lak*/
+/* System Error Messages */
+
+#system-message {
+	margin: 0 0 0 -2px;
+	padding: 0;
+}
+#system-message dt { font-weight: bold;  display: none; }
+#system-message dd { margin: 0; font-weight: bold; text-indent: 30px; }
+#system-message dd ul { 
+	color: #0055BB; 
+	background-position: 4px top; 
+	background-repeat: no-repeat; 
+	margin-bottom: 10px; 
+	list-style: none; 
+	padding: 5px; 
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-o-border-radius: 4px;
+}
+#system-message dd ul li{ line-height:1.5em }
+#system-message dd.error ul,
+#system-message dd.warning ul,
+#system-message dd.notice ul
+{
+	color: #c00;
+}
+
+#system-message dd.error ul {
+	background-color: #E6C0C0;
+	background-image: url(../../img/BE/notice-alert.png);
+	border-top-color: #DE7A7B;
+	border-bottom-color: #DE7A7B;
+}
+/*alert for sending mail*/
+#system-message dd.hiddens ul {
+  background-color: #ffffff;
+  /*background-image: url(../../img/BE/notice-alert.png);*/
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+/* System Warning Messages */
+#system-message dd.warning ul {
+	color: #c00;
+	background-color: #E6C8A6;
+	background-image: url(../../img/BE/notice-note.png);
+	border-top-color: #FFBB00;
+	border-bottom-color: #FFBB00;
+}
+
+/* System Notice Messages */
+#system-message dd.notice ul {
+	color: #c00;
+	background-color: #EFE7B8;
+	background-image: url(../../img/BE/notice-note.png);
+	border-top-color: #F0DC7E;
+	border-bottom-color: #F0DC7E;
+}
+#system-message dd.message ul {
+	color: #4C8000;
+	background-color: #DFF0D8;
+	/*background-image: url(../../img/BE/tick.png);*/
+}
+
+/* System Error Messages */
+#system-message dd.error ul,
+#system-message dd.warning ul,
+#system-message dd.notice ul,
+#system-message dd.hiddens ul
+
+{
+	color: #c00;
+}
+
+#system-message dd.error ul {
+	background-color: #E6C0C0;
+	background-image: url(../../img/BE/notice-alert.png);
+	border-top-color: #DE7A7B;
+	border-bottom-color: #DE7A7B;
+}
+
+/* System Warning Messages */
+#system-message dd.warning ul {
+	color: #c00;
+	background-color: #E6C8A6;
+	background-image: url(../../img/BE/notice-note.png);
+	border-top-color: #FFBB00;
+	border-bottom-color: #FFBB00;
+}
+
+/* System Notice Messages */
+#system-message dd.notice ul {
+	color: #c00;
+	background-color: #EFE7B8;
+	background-image: url(../../img/BE/notice-note.png);
+	border-top-color: #F0DC7E;
+	border-bottom-color: #F0DC7E;
+}
+/* System Notice Messages */
+#system-message dd.hiddens ul {
+  color: #ffffff;
+  background-color: #ffffff;
+  /*background-image: url(../../img/BE/notice-note.png);*/
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+/* class table overwrite */
+.table_sub > thead > tr > th, .table_sub > tbody > tr > th, .table_sub > tfoot > tr > th, .table_sub > thead > tr > td, .table_sub > tbody > tr > td, .table_sub > tfoot > tr > td{
+	border-top: none;
+	line-height: 1.42857;
+    padding: 8px;
+    vertical-align: top;
+}
+.fist_check{
+	padding-left: 30px;
+}
+.modal-body {
+  overflow-y:visible;
+}
+.form-login{
+	background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    margin: 0 auto 0px;
+    max-width: 500px;
+    padding: 19px 29px 29px;
+	margin-top:20px;
+	}
+.form-login-heading{
+	text-align:center;
+}
+/* solak style for package and customize */
+.pkadd {
+  cursor: pointer;
+}
+/* end of style for package and customize */
+
+
+/*/////////////////////////////////////////////////Drop Down/////////////////////////////////////////*/
+
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700);
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,300);
+@charset 'UTF-8';
+/* Base Styles */
+#cssmenu,
+#cssmenu ul,
+#cssmenu li,
+#cssmenu a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  font-weight: normal;
+  text-decoration: none;
+  line-height: 1;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  position: relative;
+}
+#cssmenu {
+  /*width: 250px;*/
+  border-bottom: 4px solid #656659;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+#cssmenu a {
+  line-height: 1.3;
+}
+#cssmenu > ul > li:first-child {
+  background: #66665e;
+  background: -moz-linear-gradient(#66665e 0%, #45463d 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #66665e), color-stop(100%, #45463d));
+  background: -webkit-linear-gradient(#66665e 0%, #45463d 100%);
+  background: linear-gradient(#66665e 0%, #45463d 100%);
+  border: 1px solid #45463d;
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+}
+#cssmenu > ul > li:first-child > a {
+  padding: 15px 10px;
+  background: url(../../img/BE/pattern.png) top left repeat;
+  border: none;
+  border-top: 1px solid #818176;
+  -webkit-border-radius: 3px 3px 0 0;
+  -moz-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+  font-family: 'Ubuntu', sans-serif;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+  text-shadow: 0 -1px 1px #000000;
+}
+#cssmenu > ul > li:first-child > a > span {
+  padding: 0;
+}
+/*#cssmenu > ul > li:first-child:hover {
+  background: #66665e;
+  background: -moz-linear-gradient(#66665e 0%, #45463d 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #66665e), color-stop(100%, #45463d));
+  background: -webkit-linear-gradient(#66665e 0%, #45463d 100%);
+  background: linear-gradient(#66665e 0%, #45463d 100%);
+}*/
+#cssmenu > ul > li {
+  background: #428aca;
+  background: -moz-linear-gradient(#428aca 0%, #3070a9 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #428aca), color-stop(100%, #3070a9));
+  background: -webkit-linear-gradient(#428aca 0%, #3070a9 100%);
+  background: linear-gradient(#428aca 0%, #3070a9 100%);
+}
+#cssmenu > ul > li:hover {
+  background: #3783c5;
+  background: -moz-linear-gradient(#3783c5 0%, #2c689e 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3783c5), color-stop(100%, #2c689e));
+  background: -webkit-linear-gradient(#3783c5 0%, #2c689e 100%);
+  background: linear-gradient(#3783c5 0%, #2c689e 100%);
+}
+#cssmenu > ul > li > a {
+  padding: 12px 10px;
+  font-size: 14px;
+  display: block;
+  background: url(../../img/BE/pattern.png) top left repeat;
+  color: #ffffff;
+  border: 1px solid #2a6396;
+  border-top: none;
+  text-shadow: 0 -1px 1px #193b5a;
+}
+#cssmenu > ul > li > a > span {
+  display: block;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+#cssmenu > ul > li > a:hover {
+  text-decoration: none;
+}
+/*#cssmenu > ul > li.active {
+  border-bottom: none;
+}*/
+#cssmenu > ul > li.has-sub > a span {
+  background: url(../../img/BE/icon_plus.png) 96% center no-repeat;
+}
+#cssmenu > ul > li.has-sub.active > a span {
+  background: url(../../img/BE/icon_minus.png) 96% center no-repeat;
+}
+
+/* Sub menu */
+#cssmenu ul ul {
+  display: none;
+  background: #fff;
+  border-right: 1px solid #a2a194;
+  border-left: 1px solid #a2a194;
+}
+#cssmenu ul ul li {
+  padding: 0;
+  border-bottom: 1px solid #d4d4d4;
+  border-top: none;
+  background: #f7f7f7;
+  background: --linear-gradient(#f7f7f7 0%, #ececec 100%);
+  background: -webmozkit-gradient(linear, left top, left bottom, color-stop(0%, #f7f7f7), color-stop(100%, #ececec));
+  background: -webkit-linear-gradient(#f7f7f7 0%, #ececec 100%);
+  background: linear-gradient(#f7f7f7 0%, #ececec 100%);
+}
+#cssmenu ul ul li:last-child {
+  border-bottom: none;
+}
+#cssmenu ul ul a {
+  padding: 10px 10px 10px 25px;
+  display: block;
+  color: #676767;
+  font-size: 12px;
+  font-weight: normal;
+}
+#cssmenu ul ul a:before {
+  content: '»';
+  position: absolute;
+  left: 10px;
+  color: #428aca;
+}
+#cssmenu ul ul a:hover {
+  color: #428aca;
+}
+/*#cssmenu a:focus {
+    background: green;
+}*/
+
+/*Dropdown Images*/
+.dd-options{
+  height: 355px;
+}
+/*End Dropdown Images*/
+
+
+

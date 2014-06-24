@@ -1,0 +1,56 @@
+[11-Apr-2014 02:28:17] PHP Parse error:  syntax error, unexpected '{' in /home2/codinga2/public_html/masterbooking/application/controllers/subscribers.php on line 218
+[11-Apr-2014 02:28:25] PHP Parse error:  syntax error, unexpected '{' in /home2/codinga2/public_html/masterbooking/application/controllers/subscribers.php on line 218
+[11-Apr-2014 02:28:59] PHP Parse error:  syntax error, unexpected '{' in /home2/codinga2/public_html/masterbooking/application/controllers/subscribers.php on line 218
+[11-Apr-2014 02:29:14] PHP Parse error:  syntax error, unexpected '{' in /home2/codinga2/public_html/masterbooking/application/controllers/subscribers.php on line 218
+[11-Apr-2014 02:30:25] PHP Parse error:  syntax error, unexpected '{' in /home2/codinga2/public_html/masterbooking/application/controllers/subscribers.php on line 218
+[11-Apr-2014 02:30:34] PHP Parse error:  syntax error, unexpected '{' in /home2/codinga2/public_html/masterbooking/application/controllers/subscribers.php on line 218
+[11-Apr-2014 02:30:50] PHP Parse error:  syntax error, unexpected '{' in /home2/codinga2/public_html/masterbooking/application/controllers/subscribers.php on line 218
+[11-Apr-2014 03:52:34] PHP Parse error:  syntax error, unexpected $end, expecting T_FUNCTION in /home2/codinga2/public_html/masterbooking/application/controllers/subscribers.php on line 237
+[11-Apr-2014 03:52:42] PHP Parse error:  syntax error, unexpected $end, expecting T_FUNCTION in /home2/codinga2/public_html/masterbooking/application/controllers/subscribers.php on line 237
+[11-Apr-2014 03:56:21] PHP Parse error:  syntax error, unexpected $end, expecting T_FUNCTION in /home2/codinga2/public_html/masterbooking/application/controllers/subscribers.php on line 239
+[27-Apr-2014 21:12:41 America/Denver] PHP Fatal error:  Call to a member function from() on a non-object in /home2/codinga2/public_html/masterbooking/application/controllers/subscribers.php on line 235
+[27-Apr-2014 21:19:41 America/Denver] PHP Fatal error:  Call to a member function from() on a non-object in /home2/codinga2/public_html/masterbooking/application/controllers/subscribers.php on line 247
+[01-May-2014 20:25:31 America/Denver] PHP Fatal error:  Call to undefined method MU_Model::count_all_datapassenger() in /home2/codinga2/public_html/masterbooking/application/controllers/passenger.php on line 148
+[01-May-2014 20:25:45 America/Denver] PHP Fatal error:  Call to undefined method MU_Model::count_all_datapassenger() in /home2/codinga2/public_html/masterbooking/application/controllers/passenger.php on line 148
+[02-May-2014 00:59:24 America/Denver] PHP Fatal error:  Call to undefined method MU_Model::count_all_datapassenger() in /home2/codinga2/public_html/masterbooking/application/controllers/passenger.php on line 148
+[02-May-2014 01:12:45 America/Denver] PHP Fatal error:  Call to undefined method MU_Model::count_all_datapassenger() in /home2/codinga2/public_html/masterbooking/application/controllers/passenger.php on line 148
+[02-May-2014 01:22:18 America/Denver] PHP Fatal error:  Call to undefined method MU_Model::count_all_datapassenger() in /home2/codinga2/public_html/masterbooking/application/controllers/passenger.php on line 148
+[02-May-2014 03:01:32 America/Denver] PHP Fatal error:  Call to undefined method MU_Model::count_all_datapassenger() in /home2/codinga2/public_html/masterbooking/application/controllers/passenger.php on line 148
+[05-May-2014 01:14:07 America/Denver] PHP Parse error:  syntax error, unexpected '<' in /home2/codinga2/public_html/masterbooking/application/views/include/FE/modal/passenger_detailbookingform.php on line 13
+[05-May-2014 01:14:10 America/Denver] PHP Parse error:  syntax error, unexpected '<' in /home2/codinga2/public_html/masterbooking/application/views/include/FE/modal/passenger_detailbookingform.php on line 13
+[05-May-2014 01:16:43 America/Denver] PHP Parse error:  syntax error, unexpected end of file in /home2/codinga2/public_html/masterbooking/application/views/include/FE/modal/passenger_detailbookingform.php on line 70
+[05-May-2014 01:16:44 America/Denver] PHP Parse error:  syntax error, unexpected end of file in /home2/codinga2/public_html/masterbooking/application/views/include/FE/modal/passenger_detailbookingform.php on line 70
+[08-May-2014 00:59:46 America/Denver] PHP Fatal error:  Cannot redeclare Site::packages() in /home2/codinga2/public_html/masterbooking/application/controllers/site.php on line 531
+[08-May-2014 00:59:50 America/Denver] PHP Fatal error:  Cannot redeclare Site::packages() in /home2/codinga2/public_html/masterbooking/application/controllers/site.php on line 531
+[08-May-2014 22:53:09 America/Denver] PHP Fatal error:  Call to undefined method Mod_booking::updateAccompanyInBooking() in /home2/codinga2/public_html/masterbooking/application/controllers/site.php on line 93
+[08-May-2014 22:56:41 America/Denver] PHP Fatal error:  Call to undefined method Mod_booking::updateAccompanyInBooking() in /home2/codinga2/public_html/masterbooking/application/controllers/site.php on line 93
+[09-May-2014 02:21:18 America/Denver] PHP Fatal error:  Call to undefined method Mod_booking::updateAccompanyInBooking() in /home2/codinga2/public_html/masterbooking/application/controllers/site.php on line 93
+[09-May-2014 02:50:13 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 02:50:54 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 02:51:05 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 02:52:14 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 03:04:38 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 04:02:19 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 09:14:52 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:09:48 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:10:00 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:11:13 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:11:45 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:12:05 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:12:11 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:14:03 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:14:05 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:19:35 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:20:23 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:20:25 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:22:44 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:22:49 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:23:06 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:47:26 America/Denver] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in /home2/codinga2/public_html/masterbooking/application/controllers/site.php on line 115
+[09-May-2014 19:50:54 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:50:56 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:54:38 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 19:54:49 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 20:21:30 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 20:31:03 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236
+[09-May-2014 20:31:12 America/Denver] PHP Fatal error:  Cannot redeclare Mod_booking::getFestival() in /home2/codinga2/public_html/masterbooking/application/models/mod_booking.php on line 236

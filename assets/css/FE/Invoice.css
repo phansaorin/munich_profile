@@ -1,0 +1,113 @@
+/* Formatting for Invoice.php's HTML output. */
+
+@CHARSET "UTF-8";
+
+body {
+	margin: 36pt 72pt;
+}
+
+/* Page header */
+div#header {
+	border-bottom: solid black;
+	padding-bottom: 19pt;
+	margin-bottom: 72pt;
+
+	background-image: url("Azuresol_OnyxTree-S.png");
+	background-repeat: no-repeat;
+}
+
+p.companyName {
+	font-family: "Palatino", "Times New Roman", "Georgia", serif;
+	font-size: 26px;
+	padding-left: 128px;
+	font-weight: bold;
+}
+
+div#header address {
+	font-style: italic;
+	font-size: 16px;
+	padding-left: 128px;
+}
+
+/* Page content */
+div#content {
+}
+
+table.invoice {
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	border-collapse: collapse;
+}
+
+tr.invoiceHead {
+	border-bottom: 2pt solid green;
+}
+
+th.itemCol {
+	text-align: left;
+	width: 60%;
+}
+
+th.quantityCol {
+	text-align: right;
+	width: 10%;
+}
+
+th.priceCol {
+	text-align: right;
+	width: 15%;
+}
+
+th.costCol {
+	text-align: right;
+	width: 15%;
+}
+
+tr.invoiceRow {
+	border-bottom: 1pt solid black;
+}
+
+td.itemCol {
+	text-align: left;
+}
+
+td.quantityCol {
+	text-align: right;
+}
+
+td.priceCol {
+	text-align: right;
+}
+
+td.costCol {
+	text-align: right;
+}
+
+tr.totalRow {
+	border-bottom: 1pt solid green;
+}
+
+th.totalHead {
+	text-align: right;
+}
+
+td.totalCol {
+	text-align: right;
+}
+
+/* Page footer */
+div#footer {
+	border-top: solid black;
+	padding-top: 9pt;
+	margin-top: 72pt;
+}
+
+p.print {
+	float: right;
+	border: none;
+}
+
+p.info {
+	font-size: 12px;
+}

@@ -1,0 +1,246 @@
+/* style for menu*/
+
+.a:hover, a:focus{
+	color:#FFF !important;
+	}
+.nav > li > a:hover, .nav > li > a:focus{
+	background-color:#AE813C !important;
+	color:rgb(255, 255, 255) !important;
+	}
+.nav > li > a:hover, .nav > li > a{
+	color:#FFF !important;
+	}
+/* sub menu 1 */
+#menu li .submenu1 {
+	background-color: #3F703F;
+    display: none;
+    list-style: none outside none;
+    margin: 0px;
+    padding:0px;
+    width: 200px;
+    position: absolute;
+}
+#menu li .submenu1 a {
+	color:rgb(255, 255, 255) !important;
+}
+#menu li .submenu1 li{
+	padding: 10px 0px;
+	clear:both;
+}
+#menu li:hover .submenu1 {
+    display: block !important;
+    z-index: 100;
+}
+#menu li:hover .submenu1 a {
+	padding: 0px 5px 0px 10px;
+	display: block !important;
+	background: none !important;
+    color: #FFF !important;
+}
+#menu li .submenu1 li:hover{
+	background-color: #AE813C !important;
+}
+/* sub menu 2*/
+#menu .submenu2{
+	background-color: #3F703F;
+    display: none;
+    list-style: none outside none;
+    margin: 0px;
+    padding:0px;
+    width: 200px;
+    position: absolute;
+}
+#menu .submenu1 li:hover .submenu2{
+	margin-top: -10px;
+	display: block !important;
+    z-index: 100;
+    margin-left: 200px;
+    border-left:1px solid #FFF;
+}
+/* current menu */
+.current{
+	background-color: #AE813C !important;
+}
+.current a{
+	color:rgb(255, 255, 255) !important;
+}
+/* left menu */
+.side_left{
+	padding-top: 10px;
+	padding-left: 0px;
+}
+.side_left li:hover{
+	background-color: #DDDDDD;
+}
+/* right menu */
+.side_right{
+	padding-top: 10px;
+	padding-right: 0px;
+}
+.side_right li:hover{
+	background-color: #DDDDDD;
+}
+/* style for menu*/
+
+iframe {
+	display:none !important;
+}
+
+.languages_icon a img{
+	display:inline;
+	padding-top:25px;
+}
+.logo a img{
+	float: right;
+	padding-top:4px;
+}
+.header_tem{
+	background-image:url(../../img/FE/header-.png);
+	height: 80px;
+}
+.menu_tem{
+	background-color:#3F703F;
+}
+.top_footer{
+	height:10px;
+	background-image:url(../../img/FE/bg_top_footer.png);
+	}
+.footer_tem{
+	height: 80px;
+	background-color: #3F703F;
+}
+.icon_footer a {
+	display:inline;
+	float:right;
+	padding:20px 5px 0px 0px;
+}
+/* style for read more*/
+.readmore {
+	color: red;
+}
+/* General style */
+.h1_sm{
+	font-size: 18px;
+}
+/* feedback page */
+.fblist{
+	border:1px solid #CCC;
+	background: #F9F9F9;
+	margin-top:5px;
+	margin-bottom:5px;
+}
+.br_left{
+	border-left: 1px solid #ccc;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+/* class for hiddin some thing */
+.hiddenSTH{
+	display: none;
+}
+/* Contact us page */
+.contact_info{
+	width: 100%;
+}
+.contact_info tr td{
+	padding-bottom: 10px;
+}
+.bh2_botttom{	
+	border-bottom: 1px solid #CCCCCC;
+	margin-bottom: 15px;
+	padding-bottom: 10px;
+}
+/* solak style */
+.img-ftv {
+	width:100px;
+	float:left;
+	margin-right:10px;
+	margin-bottom: 2px;
+}
+.div-ftv{
+	border: 1px solid #CCC;
+	padding: 10px;
+	text-align: justify;
+	/*height: 160px;*/
+}
+.div-ftv p{
+	line-height: 1.8;
+	margin-bottom: 0px;
+}
+.div-ftv h4{
+	margin-bottom: 5px;
+    margin-top: 5;
+}
+.div-ftv-contain{
+	padding: 3px;
+}
+.submit{ float:right; }
+.h3_location {
+	border-bottom: 1px dotted #CCCCCC;
+    padding: 0 0 10px;
+}
+.txtTitleChoose{text-align: center;}
+.txtTitleChoose h2{font-weight: bold; font-size: 35px;}
+.txtTitleChoose h3{font-weight: bold; font-size: 35px;}
+.media {padding-right:10px;padding-left:0px;text-align: justify;}
+.media .pk_img{padding-left:0px;}
+.pricepackages{color: white; position: absolute; background: none repeat scroll 0% 0% #3F703F; z-index: 100; padding: 10px; border-radius: 20px; right: 25px; bottom: 10px;}
+.pkcontent{background:#f2f2f2; padding: 5px 5px 10px 5px;border:1px solid #cccccc;}
+.day{
+	padding-left: 5px;
+	padding-right: 5px;
+	border-left: 1px solid #CCCCCC;
+}
+.day:first-child{
+	border-left: none;
+	padding-left: 0px;
+}
+.mainmadia{
+	background:#F5F5F5;
+	border-radius:5px;
+	padding:5px;
+	border:1px solid #CCCCCC;
+}
+/* end of solak style*/
+
+/* add style form customize on front end */
+
+.wrap_customize{
+	background-color: #EFEFEF;
+	border-radius: 5px;
+}
+.titleBooking{
+	text-align: center;
+}
+.menu_customize{ background-color: #DCDCDC !important; border-radius: 5px;}
+.menu_customize li a{ color: green !important; }
+.form-booking{
+	border-radius: 3px;
+	border: 1px solid #CCC;
+	background-color: #F0F9F0;
+}
+.form-order{
+	border-left-color: #DDDDDD;
+	background-color: #F0F9F0;
+	border-radius: 3px;
+	border: 1px solid #CCC;
+}
+.modal-content{
+	/*height: auto;*/
+	height: 400px;
+	overflow: hidden;
+}
+
+.btn_popupclose{
+	float: right;
+	padding: 0 18px 18px 0;
+}
+.btn_popup{
+	float: right;
+	padding: 8px 124px 18px 0px;
+}
+.dd-options{
+	height: 200px;
+}
+
+

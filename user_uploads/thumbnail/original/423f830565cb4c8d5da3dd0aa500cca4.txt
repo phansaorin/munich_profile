@@ -1,0 +1,25 @@
+1. what is the different between Interface and abstract class ?
+2. what is "parent" , "Final" , "Interface" , "abstract" ?
+3. what is access modified "Public","Private","Protected" ?
+4.what is the different between Implements and Extented ?
+5. what is constructor ? example writing code about constructor ?
+https://www.youtube.com/watch?v=lXGkRSMJCuw&index=22&list=PL09BD3E11E677A3CC
+
+
+Answer
+5. Constructor have name the same class but it does not retrun value and data tppe.
+ex: 
+
+
+- Interface :
+    +Use key word "Implements"
+    +Child Class can Implements many Interface 
+    +Default access Modified of Interface "Public"
+    +..........
+-Abstract Class :
+    +Use key word "Extented"
+    +Child Class can have only one Extented from Superclass
+    +Abstract Class have two access Modified : Protected and Public.
+    +.............
+???????????????????????????
+??????????????????????????????????
