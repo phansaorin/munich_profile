@@ -354,4 +354,48 @@ class Mod_booking extends MU_Model {
 		return $querybookingpk;
 	}
 
+	/*Start Chhingchhing*/
+	/*
+    * public function add information of passenger to table passenger
+    * @param parameter $pfname, $plname, $pgender, $pdob, $pmobile, $phphone, $paddress, $pcode, $pcity, $pcountry, $pnumber
+    */
+    public function personal_information(&$passengerInfo, $pass_id=false){
+        if (!$pass_id or !$this->mod_fecusomize->exist_passenger_by_id($pass_id)) {
+	        if ($this->exist_passenger_by_email($passengerInfo['pass_email'])) {
+                return false;
+            } else {
+                if($this->db->insert('passenger', $passengerInfo))
+                {
+                    $passengerInfo['pass_id'] = $this->db->insert_id();
+                    return true;
+                } 
+                return false;
+            }
+	        
+	    	return false;
+		}
+    }
+
+    /*
+    * Check existing passenger by email
+    */
+    function exist_passenger_by_email($email) {
+        $query = $this->db
+            ->where("pass_email", $email)
+            ->get("passenger");
+        return ($query->num_rows() == 1);
+    }
+
+    /*
+    * Count all passengers who added by a trip leader
+    */
+    function get_all_member_by_pass_addby($pass_id, $booking_id) {
+        $query = $this->db
+            ->where("pbk_pass_id", $pass_id)
+            ->where("pbk_bk_id", $booking_id)
+            ->get("passenger_booking");
+        return $query;
+    }
+	/*End Chhingchhing*/
+
 }

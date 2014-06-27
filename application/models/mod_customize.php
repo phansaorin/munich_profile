@@ -518,6 +518,7 @@ class Mod_customize extends MU_Model{
             ->get('customize_conjection');
         return $querycusconacc;
     }
+
 }
 
 /* End of file mod_customize.php */

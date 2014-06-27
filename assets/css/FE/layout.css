@@ -243,4 +243,18 @@ iframe {
 	height: 200px;
 }
 
+/* For passenger profile */
+.td-title {
+	width: 35%;
+}
+
+.h2_pass_profile {
+	text-align: center;
+}
+
+.tr-detail > td > table > thead > tr > th {
+    font-size: 0.9em;
+    font-style: italic;
+}
+
 

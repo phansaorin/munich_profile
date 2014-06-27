@@ -918,30 +918,31 @@ class Customize extends MU_Controller {
 }
     // function to view detial of accommodation
     public function accdetail($acc_id, $cuscon_id){
-    if ($this->check_user_session()) {
-        $selectAcc = $this->mod_customize->getAccommodationCustomize($cuscon_id);        
-        $accommodations = array();
-        if($selectAcc->num_rows() > 0){
-            foreach($selectAcc->result() as $sltAcc){                
-                $accommodations = unserialize($sltAcc->cuscon_accomodation);
+        if ($this->check_user_session()) {
+            $selectAcc = $this->mod_customize->getAccommodationCustomize($cuscon_id);        
+            $accommodations = array();
+            if($selectAcc->num_rows() > 0){
+                foreach($selectAcc->result() as $sltAcc){                
+                    $accommodations = unserialize($sltAcc->cuscon_accomodation);
+                }
             }
+            $this->showDetailsAcc($accommodations['main-accommodation'][$acc_id]);
         }
-        $this->showDetailsAcc($accommodations['main-accommodation'][$acc_id]);
     }
-}
+
     // function to view detial of transportation
     public function tpdetail($tpsid, $cuscon_id){
-    if ($this->check_user_session()) {
-        $selectTps = $this->mod_customize->getTransportCustomize($cuscon_id);        
-        $transportation = array();
-        if($selectTps->num_rows() > 0){
-            foreach($selectTps->result() as $sltTps){                
-                $transportation = unserialize($sltTps->cuscon_transportation);
+        if ($this->check_user_session()) {
+            $selectTps = $this->mod_customize->getTransportCustomize($cuscon_id);        
+            $transportation = array();
+            if($selectTps->num_rows() > 0){
+                foreach($selectTps->result() as $sltTps){                
+                    $transportation = unserialize($sltTps->cuscon_transportation);
+                }
             }
+            $this->showDetailsTps($transportation['main-transport'][$tpsid]);
         }
-        $this->showDetailsTps($transportation['main-transport'][$tpsid]);
     }
-}
     // function to view detial of subactivities
     public function subactdetail($act_id, $cuscon_id, $subAct){
     if ($this->check_user_session()) {
@@ -1166,6 +1167,7 @@ class Customize extends MU_Controller {
             echo $records;
         }
     }
+
 }
 
 /* End of file customize.php */

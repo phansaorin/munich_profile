@@ -334,18 +334,45 @@ class Booking extends MU_Controller {
         }
     }
 
+/*Start Chhingchhing*/
+    /**
+     * @insert a new array member at a given index
+     * @param array $array
+     * @param mixed $new_element
+     * @param int $index
+     * @return array
+     */
+     function insertArrayIndex($array, $new_element, $index) {
+        $array[$index] = $new_element;
+        return $array;
+     }
+
     /***********/
     public function add_extraservice($bkID, $bkType){
         $extraservices = array();
         $extraservices = MU_Model::getForiegnTableName("booking", array('bk_id' => $bkID), 'bk_addmoreservice');
         $extraservices = unserialize($extraservices);
         $esID = $this->input->post('bkmodalextraservice');
-       // echo $esID; die();
-        $objRecord = $this->mod_booking->getExtraProductById($esID);
 
+       // echo $esID; die();
+        // Information of new product just add
+        $objRecord = $this->mod_booking->getExtraProductById($esID);
         $extraproductactbooking = $objRecord->result();
         $extraproductactbooking = json_decode(json_encode($extraproductactbooking), true);
         $extraservices[$esID] = $extraproductactbooking[0];
+
+        // Customize booking
+        if ($bkType == 'customize') {
+            $temp_old = array();
+            $temp_new = array();
+            $bookingInfos = $this->mod_booking->getBookingEditCustomize($bkID)->result();
+            foreach ($bookingInfos as $bookingInfo) {
+                $temp_old = unserialize($bookingInfo->bk_addmoreservice);
+            }
+            $temp_new = $this->insertArrayIndex($temp_new, $extraservices[$esID], $esID);
+            array_push($temp_old, $temp_new);
+            $extraservices = $temp_old;
+        }
 
         $extraservices = serialize($extraservices);
         $result = $this->mod_booking->updateExtraservice($extraservices, $bkID);
@@ -354,6 +381,94 @@ class Booking extends MU_Controller {
             redirect('booking/view_booking_'.$bkType.'/'.$bkID.'/'.$bkType);
         }
     }
+
+    /*
+    * public function customize_more_passenger
+    * load template fe_more_passenger
+    */
+    public function customize_more_passenger() {
+        $bkID = $this->input->post('bk_id');
+        $passID = $this->input->post('pass_id');
+        $accompany = MU_Model::getForiegnTableName("passenger_booking", array('pbk_bk_id' => $bkID, 'pbk_pass_id' => $passID), 'pbk_pass_come_with');
+        $accompany = unserialize($accompany);
+        $temp_old = array();
+        $temp_new = array();
+        if ($accompany) {
+            $temp_old = $accompany;
+        }
+
+        $passengerInfo = array(
+            'pass_addby' => $passID,
+            'pass_fname'        => $this->input->post('pfname'),
+            'pass_lname'        => $this->input->post('plname'),
+            'pass_email'        => $this->input->post('pemail'),
+            'pass_phone'        => $this->input->post('phphone'),
+            'pass_mobile'       => $this->input->post('pmobile'),
+            'pass_country'      => $this->input->post('pcountry'),
+            'pass_address'      => $this->input->post('paddress'),
+            'pass_company'      => $this->input->post('pcompany'),
+            'pass_gender'       => $this->input->post('pgender'),
+            'pass_status'       => 1,
+            'pass_deleted'      => 0,
+        );
+        $success  = $this->mod_booking->personal_information($passengerInfo);
+        $result = false;
+        if ($success) {
+            $temp_old = $this->insertArrayIndex($temp_old, $passengerInfo['pass_id'], $passengerInfo['pass_id']);
+            // array_push($temp_old, $temp_new);
+            $accompany = serialize($temp_old);
+            $result = $this->mod_booking->updateaccompany($accompany, $bkID, $passID);
+        }
+
+        if (!$result) {
+            $arr_errors = array(
+                "success" => false,
+                "sms_type" => "danger",
+                "sms_title" => "Error!",
+                "sms_value" => "Sorry! That email is already registered. Please login before you booking."
+            );
+            echo json_encode($arr_errors);
+        } else {
+            $arr_errors = array(
+                "success" => true,
+                "sms_type" => "success",
+                "sms_title" => "Congradulation!",
+                "sms_value" => "You have been added a passenger with successfully."
+            );
+            echo json_encode($arr_errors);
+        }
+    }
+
+    // Check existing passenger by email
+    function checkExistPassengerByEmail() {
+        $email = $this->input->post('email');
+        $result = $this->mod_booking->exist_passenger_by_email($email);
+        if ($result) {
+            $arr_errors = array(
+                "success" => false,
+                "sms_type" => "danger",
+                "sms_title" => "Error!",
+                "sms_value" => "Sorry! That email is already registered."
+            );
+            echo json_encode($arr_errors);
+        }
+    }
+
+    /*public function add_morepassenger($bkID, $passID, $bkType){
+        $accompany = MU_Model::getForiegnTableName("passenger_booking", array('pbk_bk_id' => $bkID, 'pbk_pass_id' => $passID), 'pbk_pass_come_with');
+        $accompany = unserialize($accompany);
+        $pID = $this->input->post('bkmodalpass');
+        $accompany[$pID] = $pID;
+        $accompany = serialize($accompany);
+        $result = $this->mod_booking->updateaccompany($accompany, $bkID, $passID);
+        if($result){
+            $this->session->set_userdata('create', show_message('The passenger added successfully.', 'success'));
+            redirect('booking/view_booking_'.$bkType.'/'.$bkID.'/'.$bkType);
+        }
+    }*/
+
+/*End Chhingchhing*/
+
     // delete multiple booking
     public function deleteMultipleBooking(){
       $multiCheck = $this->input->post("check_checkbox");
@@ -397,7 +512,7 @@ class Booking extends MU_Controller {
         $data['dashboard'] = "management";
         $data['passenger'] = $this->mod_booking->getPassenger();
         $data['bookingedit'] = $this->mod_booking->getBookingEditCustomize($bkID);
-        $data['getpkORcus'] = $this->mod_booking->getAllCustomize();
+        // $data['getpkORcus'] = $this->mod_booking->getAllCustomize();
         $data['extraService'] = $this->mod_booking->getAllExtraService();
         if($this->input->post('btnviewsubmit')){
             $updatebooking['bk_type'] = $this->input->post('bkType');

@@ -12,6 +12,8 @@
                 $bkpaystatus = $rows->bk_pay_status;
                 $bookingtype = $rows->bk_type;
                 $bkstatusdb = $rows->bk_status;
+                $bkbalance = $rows->bk_balance;
+                $bkdeposit = $rows->bk_deposit;
                 // passenger
                 $passid = $rows->pass_id;
                 $passwith = $rows->pbk_pass_come_with;
@@ -21,21 +23,21 @@
                 $passaddress = $rows->pass_address;
                 $passcompany = $rows->pass_company;
                 $passgender = $rows->pass_gender;
-                // package
-                $pkID = $rows->cuscon_id;
-                $pkstartdate = $rows->cuscon_start_date;
-                $pkenddate = $rows->cuscon_end_date;
-                $pkname = $rows->cuscon_name;
-                $pkstockactual = $rows->cuscon_actualstock;
-                $pkprice = $rows->cuscon_saleprice;
+                // customize
+                $cusID = $rows->cuscon_id;
+                $cusstartdate = $rows->cuscon_start_date;
+                $cusenddate = $rows->cuscon_end_date;
+                /*$pkname = $rows->cuscon_name;
+                $pkstockactual = $rows->cuscon_actualstock;*/
+                $total_price = $rows->cuscon_totalprice;
                 // pkactivities
-                $package_activities['pg_activities'] = $rows->cuscon_activities;
+                $customize_activities['cus_activities'] = $rows->cuscon_activities;
                 // pkaccommodation
-                $package_accomodation['package_accomodation'] = $rows->cuscon_accomodation;
+                $customize_accomodation['cus_accomodation'] = $rows->cuscon_accomodation;
                 // pktransportation
-                $package_transportation['package_transportation'] = $rows->cuscon_transportation;
+                $customize_transportation['cus_transportation'] = $rows->cuscon_transportation;
                 // extraservice
-                $pkextraservice = $rows->bk_addmoreservice;
+                $bkextraservice = $rows->bk_addmoreservice;
             }
         }
     }
@@ -57,7 +59,7 @@
 </blockquote>
 <div class="row">
     <?php echo form_open('booking/view_booking_customize/'.$bkID.'/'.$bookingtype, 'role="form" class="frm_booking_view form-horizontal"'); ?>
-    <?php echo form_hidden('pkconprice', $pkprice); ?>
+    <?php echo form_hidden('pkconprice', $total_price); ?>
     <div class="form-group col-sm-12">
         <label class="col-sm-2 control-label">Booking Date <span class="require">*</span>:</label>
         <div class="col-sm-4">
@@ -84,6 +86,20 @@
         <div class="col-sm-4">
             <?php echo form_input(array('name' => 'bkPrice', 'value' => set_value('bkPrice',$bkpayprice), 'class' => 'bkPrice form-control', 'id' => 'bkPrice','placeholder'=>'enter price')); ?>
             <span style="color:red;"><?php echo form_error('bkPrice'); ?></span>
+        </div>
+    </div>
+    <div class="form-group col-sm-12">
+        <label class="col-sm-2 control-label">Balance($)  <span class="require">*</span>:</label>
+        <div class="col-sm-4">
+            <?php echo form_input(array('name' => 'bkbalance', 'value' => set_value('bkbalance', $bkbalance), 'class' => 'bkbalance form-control', 'id' => 'bkbalance','placeholder'=>'enter balance price')); ?>
+            <span style="color:red;"><?php echo form_error('bkbalance'); ?></span>
+        </div>
+    </div>
+    <div class="form-group col-sm-12">
+        <label class="col-sm-2 control-label">Deposit($)  <span class="require">*</span>:</label>
+        <div class="col-sm-4">
+            <?php echo form_input(array('name' => 'bkdeposit', 'value' => set_value('bkdeposit', $bkdeposit), 'class' => 'bkdeposit form-control', 'id' => 'bkdeposit','placeholder'=>'enter desposit price')); ?>
+            <span style="color:red;"><?php echo form_error('bkdeposit'); ?></span>
         </div>
     </div>
     <div class="form-group col-sm-12">
@@ -120,22 +136,6 @@
         </div>
     </div>
     <div class="form-group col-sm-12">
-        <label class="col-sm-2 control-label"><?php echo ucfirst('Customize'); ?> <span class="require">*</span>:</label>
-        <div class="col-sm-4">
-            <?php 
-                $pkcus = array();
-                $pkcus[''] = "--- select ---";
-                    if($getpkORcus->num_rows > 0){
-                        foreach($getpkORcus->result() as $value){
-                            $pkcus[$value->cuscon_id] = $value->cuscon_name;
-                        }
-                    }
-                echo form_dropdown('pkORcus', $pkcus, $pkID, 'class="pkcus form-control"'); 
-            ?>
-            <span style="color:red;"><?php echo form_error('pkORcus'); ?></span>
-        </div>
-    </div>
-    <div class="form-group col-sm-12">
         <label class="col-sm-2 control-label">Pay status <span class="require">*</span>:</label>
         <div class="col-sm-4">
             <?php 
@@ -167,7 +167,7 @@
 <!-- passenger -->
 <div id="passenger" style="padding-right:15px;padding-left:15px;">
     <div id="passbooking" style="padding-right:15px;padding-left:15px;border:1px solid #cccccc;margin-bottom:8px;">
-      <h3>Passenger &nbsp; &nbsp; <span class="bkpassenger pkadd btn-info btn-sm" data-toggle='modal' data-target='.modal-passenger'>Add Passenger</span></h3>
+      <h3>Passenger &nbsp; &nbsp; <span class="bkpassenger pkadd btn-info btn-sm" data-toggle='modal' data-target='.addmorepassenger_modal'>Add Passenger</span></h3>
       <table class="table table-striped table-hover table-bordered" style="font-size: 12px;">
         <thead>
         <tr>
@@ -219,38 +219,31 @@
 <div id="package_booking" style="padding-right:15px;padding-left:15px;">
     <div id="packcontent" style="border:1px solid #cccccc;padding-left:15px;">
     <h3>Customize</h3>
-    <table class="table table-striped table-hover table-bordered" style="font-size: 12px;width:99%;">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>From Date</th>
-            <th>To Date</th>
-            <th>Sale($)</th>
-        </tr> 
-        </thead>
-        <tbody>
-        <tr>
-            <td><?php echo $pkID; ?></td>
-            <td><?php echo $pkname; ?></td>
-            <td><?php echo $pkstartdate; ?></td>
-            <td><?php echo $pkenddate; ?></td>
-            <td><?php echo $pkprice; ?></td>
-        </tr>
-    </table> 
-        <?php if(isset($package_activities['pg_activities'])){ ?>   
+    <div class="pk_transportation">
+        <div id="accordion" class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                  <div class="panel-title customize-start-end">
+                    <b>From Date:</b> <?php echo $cusstartdate; ?><br/>
+                    <b>End Date:</b> <?php echo $cusenddate; ?>
+                  </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+        <?php if(isset($customize_activities['cus_activities'])){ ?>   
         <div class="pk_activities">
-            <?php $this->load->view(INCLUDE_BE.$this->uri->segment(1).'/pk_list_activities', $package_activities); ?>
+            <?php $this->load->view(INCLUDE_BE.$this->uri->segment(1).'/cus_list_activities', $customize_activities); ?>
         </div>
         <?php } ?>
-        <?php if(isset($package_accomodation['package_accomodation'])){ ?>   
+        <?php if(isset($customize_accomodation['cus_accomodation'])){ ?>   
         <div class="pk_accommodation">
-            <?php $this->load->view(INCLUDE_BE.$this->uri->segment(1).'/pk_list_accommodation', $package_accomodation); ?>
+            <?php $this->load->view(INCLUDE_BE.$this->uri->segment(1).'/cus_list_accommodation', $customize_accomodation); ?>
         </div>
         <?php } ?>
-        <?php if(isset($package_transportation['package_transportation'])){ ?>   
+        <?php if(isset($customize_transportation['cus_transportation'])){ ?>   
         <div class="pk_transportation">
-            <?php $this->load->view(INCLUDE_BE.$this->uri->segment(1).'/pk_list_transportation', $package_transportation); ?>
+            <?php $this->load->view(INCLUDE_BE.$this->uri->segment(1).'/cus_list_transportation', $customize_transportation); ?>
         </div>
         <?php } ?>
         <p>&nbsp;</p>
@@ -259,7 +252,7 @@
 <!-- extra service -->
 <div id="passenger" style="padding-right:15px;padding-left:15px;">
     <div id="passbooking" style="padding-right:15px;padding-left:15px;border:1px solid #cccccc;margin-bottom:8px;margin-top:8px;">
-      <h3>Extra Service &nbsp; &nbsp; <span class="bkpassenger pkadd btn-info btn-sm" data-toggle='modal' data-target='.modal-extraservice'>Add Extra Services</span></h3>
+      <h3>Extra Service &nbsp; &nbsp; <span class="bkpassenger pkadd btn-info btn-sm" data-toggle='modal' data-target='.modal-extraservice-customize'>Add Extra Services</span></h3>
       <table class="table table-striped table-hover table-bordered" style="font-size: 12px;">
         <thead>
         <tr>
@@ -270,28 +263,28 @@
             <th>To</th>
             <th>Purchase($)</th>
             <th>Sale($)</th>
-            <th>Original Stock</th>
-            <th>Actual Stock</th>
+            <!-- <th>Amount Book</th> -->
         </tr> 
         </thead>
         <tbody class="body-extraservice">
         <?php 
-            if(isset($pkextraservice)){
-                $extraservcie = unserialize($pkextraservice);
-            foreach ($extraservcie as $epacc) {
-        ?>
-                <tr class="real_ep_pk remove<?php echo $epacc['ep_id']; ?>">
-                    <td><?php echo form_checkbox(array('class' => 'check_checkbox','id' => 'check_checkbox', 'name' => 'epacc_checkbox[]', "checked" => true), $epacc['ep_id'] );  ?></td>
-                    <td><?php echo $epacc['ep_id']; ?></td>
-                    <td><?php echo character_limiter($epacc['ep_name'], 7); ?></td>
-                    <td><?php echo $epacc['start_date']; ?></td>
-                    <td><?php echo $epacc['end_date']; ?></td>
-                    <td><?php echo $epacc['ep_purchaseprice']; ?></td>
-                    <td><?php echo $epacc['ep_saleprice']; ?></td>
-                    <td><?php echo $epacc['ep_originalstock']; ?></td>
-                    <td><?php echo $epacc['ep_actualstock']; ?></td>
-                </tr>
-        <?php
+            if(isset($bkextraservice)){
+                $extraservice = unserialize($bkextraservice);
+                foreach ($extraservice as $extra_service) {
+                    foreach ($extra_service as $extra) {
+                        ?>
+                        <tr class="real_ep_pk remove<?php echo $extra['ep_id']; ?>">
+                            <td><?php echo form_checkbox(array('class' => 'check_checkbox','id' => 'check_checkbox', 'name' => 'epacc_checkbox[]', "checked" => true), $extra['ep_id'] );  ?></td>
+                            <td><?php echo $extra['ep_id']; ?></td>
+                            <td><?php echo character_limiter($extra['ep_name'], 7); ?></td>
+                            <td><?php // echo $extra->start_date; ?></td>
+                            <td><?php // echo $extra->end_date; ?></td>
+                            <td><?php echo $extra['ep_purchaseprice']; ?></td>
+                            <td><?php echo $extra['ep_saleprice']; ?></td>
+                            <!-- <td><?php //echo $extra['amount_bked']; ?></td> -->
+                        </tr>
+                    <?php
+                    }
                 }
             }
         ?>
@@ -302,6 +295,6 @@
 </div>
 
 <?php 
-    $this->load->view(INCLUDE_BE.'modal/booking-modal'); 
+    $this->load->view(INCLUDE_BE.'modal/booking-modal');
 ?>
     

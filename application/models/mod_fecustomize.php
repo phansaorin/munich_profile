@@ -114,4 +114,75 @@ class Mod_FeCustomize extends MU_model {
         );
         $this->db->insert('passenger', $passenger);
     }
+
+    /*Start Chhingchhing*/
+
+    /*
+    * View detail of each booking information of booking id and passenger id
+    */
+    public function bookingInfoByPassengerIDAndBookingID($bk_id, $passegnger_id)
+    {
+        $select = $this->db->select('*')
+                 ->join('passenger_booking','booking.bk_id  =  passenger_booking.pbk_bk_id', 'left')
+                 ->join('passenger','passenger.pass_id  =  passenger_booking.pbk_pass_id ', 'left')
+                 ->join('sale_customize','sale_customize.salecus_bk_id = booking.bk_id', 'left')                          
+                 ->join('sale_packages','sale_packages.salepk_bk_id = booking.bk_id', 'left')
+                 ->join('customize_conjection','customize_conjection.cuscon_id = sale_customize.salecus_cuscon_id', 'left')
+                 ->join('package_conjection','package_conjection.pkcon_id = sale_packages.salepk_pkcon_id', 'left')
+                 ->where('passenger.pass_deleted', 0)
+                 ->where('passenger_booking.pbk_pass_id',$passegnger_id)
+                 ->where('passenger_booking.pbk_bk_id',$bk_id)
+                 ->get('booking');
+        return $select;
+    }
+    
+    /*
+    * Get passenger information when passenger has been loged in
+    */
+    public function customizePersonal_info($passenger_id) {
+        $query = $this->db
+            ->where("pass_id", $passenger_id)
+            ->get("passenger");
+        if ($query->num_rows() == 1) {
+            return $query->row();
+        } else {
+            //Get empty base parent object, as $item_id is NOT an item
+            $pass_obj=new stdClass();
+
+            //Get all the fields from items table
+            $fields = $this->db->list_fields('passenger');
+
+            foreach ($fields as $field)
+            {
+                $pass_obj->$field='';
+            }
+
+            return $pass_obj;
+        }
+    }
+
+    // Get information of item
+    function get_info_of_main_obj($table, $col, $id, $field_select) {
+        $query = $this->db
+            ->select($field_select)
+            ->where($col, $id)
+            ->get($table);
+        if ($query->num_rows() == 1) {
+            return $query->row();
+        } else {
+            //Get empty base parent object, as $item_id is NOT an item
+            $object = new stdClass();
+
+            //Get all the fields from items table
+            $fields = $this->db->list_fields($table);
+
+            foreach ($fields as $field)
+            {
+                $object->$field='';
+            }
+            return $object;
+        }
+    }
+    /*End Chhingchhing*/
+
 }

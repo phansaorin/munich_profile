@@ -551,5 +551,8 @@ ul li a strong {
 }
 /*End Dropdown Images*/
 
-
+/*Title of panel in customize booking info BE*/
+.customize-start-end {
+  font-size: 12px;
+}
 

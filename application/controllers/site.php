@@ -300,36 +300,81 @@ change booking
     }
     $this->load->view('index', $fe_data);
   }
-    public function  profile(){
-            $fe_data['title'] = "profile user";
-            $fe_data['extraService'] = $this->mod_booking->getAllExtraService();
-            $fe_data['txtPhotos'] = $this->mod_booking->getPhotos();
-            $fe_data['menu_fe'] = $this->mod_index->getAllMenu();
-            $fe_data['site_setting'] = "profile";
-            $passegnger_id = $this->session->userdata('passengerid');
-            $fe_data['old_gender'] = array('' => '-- Select --', 'F' => 'Female', 'M' => 'Male');
-            $fe_data['old_txtStatus'] = array('0' => 'Unpublished','1' => 'Published');
-            $fe_data['profile'] = $this->mod_profilefe->pass_profilefe($passegnger_id);
-            $fe_data['passengerbooking_info'] = $this->mod_profilefe->passenger_bookedform($passegnger_id);
-            $this->load->view('index',$fe_data);
-            if ($this->input->post('frm_profile')){      
-                    $fname      =   $this->input->post('firstname');
-                    $lname      =   $this->input->post('old_lastname');
-                    $email      =   $this->input->post('old_email');
-                    $phonenum   =   $this->input->post('old_phone');
-                    $address    =   $this->input->post('old_address');
-                    $company    =   $this->input->post('old_company');
-                    $gender     =   $this->input->post('old_gender');
-                    $get_txtStatus      = $this->input->post('old_txtStatus');
-                    $profileupgrate = $this->mod_profilefe->upgrate_profile($passegnger_id, $fname,$lname,$email,$phonenum,$address,$company,$gender,$get_txtStatus);
-                    if($profileupgrate > 0){
-                        $this->session->set_userdata('create', show_message('Your data update was successfully.', 'success'));
-                        redirect('site/profile');
-                     }   
-            }
+
+/* Start Chhingchhing */
+  public function profile(){
+    $fe_data['title'] = "profile user";
+    $fe_data['extraService'] = $this->mod_booking->getAllExtraService();
+    $fe_data['txtPhotos'] = $this->mod_booking->getPhotos();
+    $fe_data['menu_fe'] = $this->mod_index->getAllMenu();
+    $fe_data['site_setting'] = "profile";
+    $passegnger_id = $this->session->userdata('passengerid');
+    $fe_data['old_gender'] = array('' => '-- Select --', 'F' => 'Female', 'M' => 'Male');
+    $fe_data['old_txtStatus'] = array('0' => 'Unpublished','1' => 'Published');
+    $fe_data['profile'] = $this->mod_profilefe->pass_profilefe($passegnger_id);
+    $fe_data['passengerbooking_info'] = $this->mod_profilefe->passenger_bookedform($passegnger_id);
+    
+    if ($this->input->post('frm_profile')){      
+      $fname      =   $this->input->post('firstname');
+      $lname      =   $this->input->post('old_lastname');
+      $email      =   $this->input->post('old_email');
+      $phonenum   =   $this->input->post('old_phone');
+      $address    =   $this->input->post('old_address');
+      $company    =   $this->input->post('old_company');
+      $gender     =   $this->input->post('old_gender');
+      $get_txtStatus      = $this->input->post('old_txtStatus');
+      $profileupgrate = $this->mod_profilefe->upgrate_profile($passegnger_id, $fname,$lname,$email,$phonenum,$address,$company,$gender,$get_txtStatus);
+      if($profileupgrate > 0){
+        $this->session->set_userdata('create', show_message('Your data update was successfully.', 'success'));
+        redirect('site/profile');
+      }  
+    }
+
+    if ($this->uri->segment('4') == 'view_detail_bk') {
+      $fe_data['booking_info'] = $this->view_detail_bk($this->uri->segment('5'));
+    }
+
+    $this->load->view('index',$fe_data);
+  }
+
+  /*
+  * public function view_detail_bk
+  * @param $bk_id (int)
+  * 
+  */
+   function view_detail_bk($bk_id) {
+    $pass_id = $this->getCurrentPassengerId();
+    $bkInfo = $this->mod_fecustomize->bookingInfoByPassengerIDAndBookingID($bk_id, $pass_id);
+
+    return $bkInfo;
+  }
+
+  /*public function customizePersonal_info($passenger_id){ 
+    return $this->mod_fecustomize->customizePersonal_info($passenger_id);
+  }*/
+
+  /*
+  * Get current user id
+  */
+  function getCurrentPassengerId() {
+    $login_sess_passenger = $this->session->userdata('passenger');
+    $new_sess_passenger = $this->session->userdata('new_passenger_id');
+    $pass_id = -1;
+    if ($new_sess_passenger OR $login_sess_passenger) {
+
+        if ($new_sess_passenger != '') {
+            $pass_id = $new_sess_passenger['pass_id'];
         }
+        if ($login_sess_passenger != '') {
+            $pass_id = $login_sess_passenger['pass_id'];
+        }
+    }
+    return $pass_id;
+  }
+
+  /* End Chhingchhing */
         
-        /*
+  /*
   * public function view_feedback
   * @param $fb_id (int)
   * return object of feedback
@@ -337,7 +382,7 @@ change booking
   */
   public function view_feedback($fb_id){
     return $this->mod_index->getFeedbackById($fb_id);
-}
+  }
 
   /*
   * public function contact()
@@ -349,7 +394,7 @@ change booking
     $fe_data['site_setting'] = "contact";
     $fe_data['contact'] = $this->mod_index->getAdminProfile();
     $this->load->view('index', $fe_data);
-}
+  }
   /*
   * public function booking
   * @param $include default (false)

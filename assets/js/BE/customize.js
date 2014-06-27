@@ -187,3 +187,193 @@ jQuery(function(){
 		});
 	});
 }); 	
+
+
+
+// Customize booking on FE with validation of form
+$(function() {
+	// Check passenger exists in Customize FE
+	var num_success = 1;
+	$("body").on("click", "input[name='btnPersonalInfoModal']", function(event) {
+		var url = $('form[name="frm_personal_info_modal"]').attr("action");
+		var data = $('form[name="frm_personal_info_modal"]').serialize();
+		var msg = validateEmptyFields();
+		if(msg) {
+	        var div_sms = '<div class="alert alert-danger alert-dismissable">';
+			div_sms += '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+			div_sms += '<strong>Error!</strong> '+msg;
+			div_sms += '</div>';
+			$("div#feedback_bar_modal").append(div_sms);
+			setTimeout(function()
+	        {
+	            $('#each_personalInfo_feedback').slideUp(250, function()
+	            {
+	                $('#each_personalInfo_feedback').removeClass();
+	            });
+	        },msg.length*125);
+
+	        return false;
+	    }
+
+		if (num_success >= $('input#add_pass_amount_pass').val()) {
+			var text = 'You cannot add more passenger than amount you selected.';
+			var div_sms = '<div class="alert alert-warning alert-dismissable">';
+			div_sms += '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+			div_sms += '<strong>Sorry</strong> '+text;
+			div_sms += '</div>';
+			$("div#feedback_bar_modal").append(div_sms);
+			setTimeout(function()
+            {
+                $('#each_personalInfo_feedback').slideUp(250, function()
+                {
+                    $('#each_personalInfo_feedback').removeClass();
+                });
+            },text.length*125);
+
+            return false;
+		} else {
+			// checkExistsEmail(check_url, email);
+			$.ajax({
+				type: "POST",
+				url: url,
+				dataType: "json",
+				data: data,
+				success: function(response) {
+					if (response.sms_type == 'success') {
+						num_success = num_success + 1;
+					};
+					if (response) {
+						var div_sms = '<div class="alert alert-'+response.sms_type+' alert-dismissable">';
+						div_sms += '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+						div_sms += '<strong>'+response.sms_title+'</strong> '+response.sms_value;
+						div_sms += '</div>';
+						$("div#feedback_bar_modal").append(div_sms);
+						setTimeout(function()
+			            {
+			                $('#each_personalInfo_feedback').slideUp(250, function()
+			                {
+			                    $('#each_personalInfo_feedback').removeClass();
+			                });
+			            },response.sms_value.length*125);
+					}
+				}
+			});
+		}
+		event.preventDefault();
+	});
+
+	// Check validation of Email
+	$('.input_email').focusout(function(e) {
+        $(this).parent().next().children(":first").remove();
+        var sEmail = $(this).val();
+        if ($.trim(sEmail).length == 0) {
+            $(this).parent().next().append("<span class='error'>Cannot be empty.</span>");
+            e.preventDefault();
+        } else if (validateEmail(sEmail)) {
+        	var url = $('form[name="frm_personal_info_modal"]').attr("action");
+			var check_url = url.replace('customize_more_passenger', 'checkExistPassengerByEmail');
+			checkExistsEmail(check_url, $(this).val());
+
+        	$(this).parent().next().append("<span class='success'>Email look like good.</span>");
+        }
+        else {
+            $(this).parent().next().append("<span class='error'>Invalid Email Address.</span>");
+            e.preventDefault();
+        }
+    });
+
+	$('.input_require').focusout(function(e) {
+        $(this).parent().next().children(":first").remove();
+        var value = $(this).val();
+        if ($.trim(value).length == 0) {
+            $(this).parent().next().append("<span class='error'>Cannot be empty.</span>");
+            e.preventDefault();
+        }
+    });
+
+	// Start for each member booking info
+	$("body").on('click', "input[name='btnEachPersonalInfo']", function(event) {
+		alert('hhhii');
+		event.preventDefault();
+		var url = $(this).parent().attr('action');
+		var data = $(this).parent().serialize();
+		$.ajax({
+			type: "POST",
+			url: url,
+			dataType: "json",
+			data: data,
+			success: function(response) {
+				if (response) {
+					var div_sms = '<div class="alert alert-'+response.sms_type+' alert-dismissable">';
+					div_sms += '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+					div_sms += '<strong>'+response.sms_title+'</strong> '+response.sms_value;
+					div_sms += '</div>';
+					$("div#each_personalInfo_feedback").append(div_sms);
+					setTimeout(function()
+		            {
+		                $('#each_personalInfo_feedback').slideUp(250, function()
+		                {
+		                    $('#each_personalInfo_feedback').removeClass();
+		                });
+		            },response.sms_value.length*125);
+				}	
+			}
+		});
+	});
+
+	//Click on close button on add more passenger on BE
+	$('body').on('click', 'button#close', function() {
+		window.location.reload(true);
+	})
+
+
+});
+
+// Validate Email input
+function validateEmail(sEmail) {
+    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    if (filter.test(sEmail)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// Check exists passenger by email
+function checkExistsEmail(url, data) {
+	$.ajax({
+		type: 'POST',
+		url: url,
+		dataType: 'json',
+		data: {'email':data},
+		success: function(response) {
+			if (response) {
+				var div_sms = '<div class="alert alert-'+response.sms_type+' alert-dismissable">';
+				div_sms += '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>';
+				div_sms += '<strong>'+response.sms_title+'</strong> '+response.sms_value;
+				div_sms += '</div>';
+				$("div#feedback_bar_modal").append(div_sms);
+				setTimeout(function()
+	            {
+	                $('#each_personalInfo_feedback').slideUp(250, function()
+	                {
+	                    $('#each_personalInfo_feedback').removeClass();
+	                });
+	            },response.sms_value.length*125);
+			}
+		}
+	});
+}
+
+// Check empty input field
+function validateEmptyFields()
+{
+    var msg= "",
+        fields = document.getElementById("frm_personal_info_modal").getElementsByClassName('input_require');
+
+    for (var i=0; i<fields.length; i++){
+        if (fields[i].value == "") 
+            msg += '<p>'+fields[i].title + ' is required. </p>';
+    }
+    return msg;
+}
