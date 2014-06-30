@@ -3,12 +3,9 @@
     <thead>
     <tr>
         <th>Name</th>
-        <th>From Date</th>
-        <th>To Date</th>
         <th>Purchase($)</th>
         <th>Sale($)</th>
         <th>Amount Book</th>
-        <!-- <th>Action</th> -->
     </tr> 
     </thead>
     <tbody class="ep_pk_body tbl_bodyaccep<?php echo $accID; ?>">
@@ -18,8 +15,6 @@
         ?>
                 <tr class="real_ep_pk remove<?php echo $epacc->ep_id; ?>">
                     <td><?php echo character_limiter($epacc->ep_name, 10); ?></td>
-                    <td><?php //echo $epacc['start_date']; ?></td>
-                    <td><?php //echo $epacc['end_date']; ?></td>
                     <td><?php echo $epacc->ep_purchaseprice; ?></td>
                     <td><?php echo $epacc->ep_saleprice; ?></td>
                     <td><?php echo $epacc->amount_bked; ?></td>

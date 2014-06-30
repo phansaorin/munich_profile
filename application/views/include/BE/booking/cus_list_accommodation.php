@@ -5,6 +5,8 @@
 	  $cus_accomodation = unserialize($cus_accomodation); 
 		foreach ($cus_accomodation as $accommodations) {
 			foreach ($accommodations as $acc) {
+				$data['departure'] = $acc['departure'];
+            	$data['return_date'] = $acc['return_date'];
 				?>
 				<div class="panel panel-default">
 					<div class="panel-heading">

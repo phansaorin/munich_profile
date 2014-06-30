@@ -12,9 +12,20 @@
     $this->session->unset_userdata('success');
   }
    ?>
+   
 <div class="row">
+  <ol class="breadcrumb">
+    <li><?php echo anchor("site/profile","Profile"); ?></li>
+    <?php 
+    if ($this->uri->segment('4') == "view_detail_bk") { ?>
+      <li>View Booking</li>
+    <?php } else if ($this->uri->segment('4') == "customize_eticket") { ?>
+      <li>Download E-ticket</li>
+    <?php }
+    ?>
+  </ol>
   <div class="col-md-4">
-    <?php if ($profile->num_rows > 0) { ?>
+    <?php if ($profile->num_rows() > 0) { ?>
       <?php foreach($profile->result() as $row) { ?>
         <span>
            <h2 class="h2_pass_profile">Welcome to :<?php echo nbs(2).ucfirst($row->pass_fname).'&nbsp;'.strtoupper($row->pass_lname); ?></h2>
@@ -190,7 +201,7 @@
                         foreach ($transportation as $transport) {
                           ?>
                           <tr class="real_sub_acc_pk remove<?php //echo $accID; ?>">
-                            <td><?php echo character_limiter($transport['info']->tp_name, 7); ?></td>
+                            <td><?php echo $transport['info']->tp_name; ?></td>
                             <td><?php echo $transport['departure']; ?></td>
                             <td><?php echo $transport["return_date"]; ?></td>
                             <td><?php echo $transport['info']->tp_saleprice; ?></td>
@@ -230,10 +241,8 @@
                           foreach ($accom['accom'] as $acc) {
                           ?>
                             <tr class="real_sub_acc_pk remove<?php //echo $accID; ?>">
-                              <td><?php echo character_limiter($acc->ht_name, 7); ?></td>
+                              <td><?php echo $acc->ht_name; ?></td>
                               <td><?php echo $acc->rt_name; ?></td>
-                              <!-- <td><?php //echo $acc->start_date; ?></td>
-                              <td><?php //echo $acc->end_date; ?></td> -->
                               <td><?php echo $acc->dhht_price; ?></td>
                               <td><?php echo $acc->rt_people_per_room; ?></td>
                               <td><?php echo $acc->amount_bked; ?></td>
@@ -257,8 +266,6 @@
                     <thead>
                       <tr>
                         <th>Activity</th>
-                        <!-- <th>From Date</th>
-                        <th>To Date</th> -->
                         <th>Unit Purchase($)</th>
                         <th>Amount</th>
                       </tr> 
@@ -272,9 +279,7 @@
                           foreach ($activity['activity'] as $act) {
                           ?>
                             <tr class="real_sub_acc_pk remove<?php //echo $accID; ?>">
-                              <td><?php echo character_limiter($act->act_name, 7); ?></td>
-                              <!-- <td><?php //echo $act->start_date; ?></td>
-                              <td><?php //echo $act->end_date; ?></td> -->
+                              <td><?php echo $act->act_name; ?></td>
                               <td><?php echo $act->act_saleprice; ?></td>
                               <td><?php echo $act->amount_bked; ?></td>
                             </tr>
@@ -309,7 +314,7 @@
                         foreach ($products as $product) {
                           ?>
                           <tr class="real_sub_acc_pk remove<?php //echo $accID; ?>">
-                            <td><?php echo character_limiter($product->ep_name, 7); ?></td>
+                            <td><?php echo $product->ep_name; ?></td>
                             <td><?php echo $product->ep_saleprice; ?></td>
                             <td><?php echo $product->amount_bked; ?></td>
                           </tr>
@@ -391,13 +396,18 @@
             </table>
               <?php
             }
-          }
+          } else { ?>
+      <div class="col-md-12 no-passenger">
+      <?php echo "No member for this booking."; ?>  
+      </div>
+      <?php
+      }
           ?>
         </div>
 
       <?php }
-    }
     echo anchor("site/profile"," Back ", array('role'=>'button', 'class'=>'btn btn-default btn-sm'));
+    }
     ?>   
     </div> 
 

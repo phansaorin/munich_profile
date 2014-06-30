@@ -257,4 +257,7 @@ iframe {
     font-style: italic;
 }
 
-
+.no-passenger {
+    height: auto;
+    min-height: 50px;
+}

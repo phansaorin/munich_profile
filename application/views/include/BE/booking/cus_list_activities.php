@@ -5,6 +5,8 @@
 	  $cus_activities = unserialize($cus_activities);
 	  foreach ($cus_activities as $activities) {
 	  	foreach ($activities as $act) {
+	  		$data['departure'] = $act['departure'];
+            $data['return_date'] = $act['return_date'];
 	  		?>
 	  		<div class="panel panel-default">
 				<div class="panel-heading">
